@@ -1,0 +1,3 @@
+# Ignore whisper model files and configurations
+whisper/data/
+whisper/config/
