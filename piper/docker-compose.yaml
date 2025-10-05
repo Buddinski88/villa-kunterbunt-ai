@@ -1,0 +1,13 @@
+services:
+  piper:
+    image: rhasspy/wyoming-piper:latest
+    container_name: piper
+    restart: unless-stopped
+    ports:
+      - "10200:10200"   # Wyoming Port für HA
+    volumes:
+      - ./data:/data
+    command: >
+      --voice de_DE-thorsten-high
+      --uri tcp://0.0.0.0:10200
+      --data-dir /data

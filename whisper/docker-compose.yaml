@@ -1,0 +1,23 @@
+services:
+  whisper:
+    image: lscr.io/linuxserver/faster-whisper:gpu
+    container_name: whisper
+    restart: unless-stopped
+    ports:
+      - 10300:10300
+    volumes:
+      - ./config:/config
+      - ./data:/data
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - WHISPER_MODEL=large-v3        # oder tiny, base, small, large-v2
+      - WHISPER_BEAM_SIZE=5         # optional: bessere Qualität
+      - WHISPER_LANGUAGE=de         # Standard-Sprache setzen
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    runtime: nvidia
