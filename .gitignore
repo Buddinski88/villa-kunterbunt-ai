@@ -1,3 +1,6 @@
 # Ignore whisper model files and configurations
 whisper/data/
 whisper/config/
+
+# Ignore whisper model files and configurations
+piper/data/
